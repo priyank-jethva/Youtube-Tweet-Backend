@@ -4,7 +4,7 @@ import { upload } from "../middlewares/multer.middlewaare.js";
 
 const router = Router()
 
-router.route("/register").get(
+router.route("/register").post(
     upload.fields(
         [
             {
