@@ -48,7 +48,7 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     // validation using for loop   
-     
+
     // const fields = [fullName, email, username, password];
     // for (let i = 0; i < fields.length; i++) {
     //     if (fields[i]?.trim() === "") {
@@ -236,6 +236,23 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     } catch (error) {
         throw new ApiError(401, error?.message || "Invalid refresh token")
     }
+})
+
+const changeCurrentPsaaword = asyncHandler(async (req, res) => {
+    const { oldPassword, newPassword } = req.body;
+
+    const user = await User.findById(req.user?._id);
+    const isPasswordCorrect = await user.isPasswoedCorrect(oldPassword);
+
+    if (!isPasswordCorrect) {
+        throw new ApiError(400, "Invalid old password")
+    }
+
+    user.password = newPassword;
+    await user.save({validateBeforSave : false})
+
+    return res.status(200)
+    .json(new ApiResponce(200,{},"Password changed successfully!"))
 })
 
 export {
