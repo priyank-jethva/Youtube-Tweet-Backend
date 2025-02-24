@@ -49,10 +49,6 @@ This is a backend project that emulates many functionalities of YouTube and comb
 - Viewing channel statistics (views, subscribers, videos, likes)
 - Accessing uploaded videos
 
-### Health Check:
-
-- Endpoint to verify the backend's health
-
 ## Technologies Used
 
 - Node.js
