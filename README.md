@@ -54,7 +54,7 @@ This is a backend project that emulates many functionalities of YouTube and comb
 - Node.js
 - Express.js
 - MongoDB
-- Cloudinary (must have an account)
+- Cloudinary
 
 
 
